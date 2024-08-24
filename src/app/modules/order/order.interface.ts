@@ -1,15 +1,12 @@
-import { TCustomer } from "../customer/customer.interface";
-import { TProduct } from "../product/product.interface";
+import { Schema } from "mongoose";
 
-export type TTotalPriceSet = {
-  currency: string;
-  amount: number;
-}
-
-export type TOrder = {
-  customer: TCustomer; // Reference to Customer
-  products: TProduct[]; // Array of references to Product
-  total_price_set: TTotalPriceSet;
-  created_at?: Date;
-  status: string;
+export interface TOrder extends Document {
+  customer: Schema.Types.ObjectId;
+  products: Schema.Types.ObjectId[];
+  total_price_set: {
+    currency: string;
+    amount: number;
+  };
+  status: 'pending' | 'completed' | 'canceled';
+  created_at: Date;
 }

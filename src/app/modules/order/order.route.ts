@@ -9,8 +9,5 @@ router.get('/:id', OrderController.getOrderById);
 router.put('/:id', OrderController.updateOrder);
 router.delete('/:id', OrderController.deleteOrder);
 
-router.get('/sales/total', OrderController.getTotalSalesOverTime);
-router.get('/sales/growth-rate', OrderController.getSalesGrowthRateOverTime);
-router.get('/analytics/ltv-cohort', OrderController.getLTVByCohort);
 
 export const OrderRoutes = router;

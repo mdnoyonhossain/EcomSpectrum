@@ -8,8 +8,8 @@ const orderSchema = new Schema<TOrder>({
         currency: { type: String, required: true },
         amount: { type: Number, required: true },
     },
+    status: { type: String, required: true, enum: ['pending', 'completed', 'canceled'], default: 'pending' },
     created_at: { type: Date, default: Date.now },
-    status: { type: String, required: true },
 });
 
-export const shopifyOrder = model('shopifyOrder', orderSchema);
+export const shopifyOrder = model<TOrder>('shopifyOrder', orderSchema);

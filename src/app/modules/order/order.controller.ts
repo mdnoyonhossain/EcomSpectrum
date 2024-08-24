@@ -79,59 +79,10 @@ export const deleteOrder = async (req: Request, res: Response) => {
     }
 };
 
-// Aggregates total sales over time based on the interval
-export const getTotalSalesOverTime = async (req: Request, res: Response) => {
-    try {
-        const query = req.query;
-        const result = await OrderServices.getTotalSalesOverTime(query);
-
-        res.status(201).json({
-            success: true,
-            message: 'Order Sale Data Retrived!',
-            data: result
-        })
-    } catch (error) {
-        res.status(500).json({ message: error });
-    }
-};
-
-// Calculate sales growth rate over time
-export const getSalesGrowthRateOverTime = async (req: Request, res: Response) => {
-    try {
-        const query = req.query;
-        const result = await OrderServices.getSalesGrowthRateOverTime(query);
-
-        res.status(201).json({
-            success: true,
-            message: 'Order Growth Rate Data Retrived!',
-            data: result
-        })
-    } catch (error) {
-        res.status(500).json({ message: error });
-    }
-};
-
-const getLTVByCohort = async (req: Request, res: Response) => {
-    try {
-        const result = await OrderServices.getLTVByCohort();
-
-        res.status(201).json({
-            success: true,
-            message: 'Customer Lifetime Value by Cohorts Retrived!',
-            data: result
-        })
-    } catch (error) {
-        res.status(500).json({ message: error });
-    }
-};
-
 export const OrderController = {
     createOrder,
     getAllOrders,
     getOrderById,
     updateOrder,
     deleteOrder,
-    getTotalSalesOverTime,
-    getSalesGrowthRateOverTime,
-    getLTVByCohort
 }
